@@ -44,4 +44,4 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.bind((address,port))
 while True:
     data = sock.recvfrom(1024) # buffer size is 1024 bytes
-    print ("received message:", data)
+    
