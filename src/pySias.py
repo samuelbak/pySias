@@ -1,7 +1,7 @@
 '''
 Created on 10 mag 2016
 
-@author: sbacchetta
+@author: Samuele Bacchetta
 '''
 
 import serial
@@ -36,12 +36,19 @@ def serial_ports():
             pass
     return result
 
+def resetCamera(porta):
+    print (porta)
+
 print("pySias")
 #print(serial_ports())
 port = 12345
 address = "172.16.35.168"
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-sock.bind((address,port))
+sock.bind((socket.gethostname(),port))
 while True:
-    data = sock.recvfrom(1024) # buffer size is 1024 bytes
+    data = sock.recvfrom(1024)
+    if (data[0].decode("utf-8") == "Ciao"):
+        print ("Ok")
+        print (resetCamera("COM3"))
+        print (resetCamera("COM4"))
     
